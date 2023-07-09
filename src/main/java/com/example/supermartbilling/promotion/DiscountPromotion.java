@@ -7,7 +7,7 @@ public class DiscountPromotion extends Promotion {
     // 折扣1-100的数字；
 
     public DiscountPromotion(int id, String name, byte discountPercentage) {
-        super(id, name, 1);
+        super(id, name, PromotionType.DISCOUNT);
         this.discountPercentage = (byte) Math.max(Math.min(discountPercentage, 100), 0);
     }
 

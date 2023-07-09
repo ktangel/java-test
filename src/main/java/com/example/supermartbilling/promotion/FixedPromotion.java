@@ -13,7 +13,7 @@ public class FixedPromotion extends Promotion {
 
 
     public FixedPromotion(int id, String name, double fixeAmount, double discountAmount) {
-        super(id, name, 2);
+        super(id, name, PromotionType.FULL_REDUCTION);
         this.discountAmount = discountAmount;
         this.fixeAmount = fixeAmount;
     }

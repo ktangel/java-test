@@ -3,6 +3,8 @@ package com.example.supermartbilling.customer;
 import com.example.supermartbilling.product.Product;
 import com.example.supermartbilling.promotion.PromotionStrategy;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,15 +12,15 @@ import java.util.List;
 // 购物车类
 public class ShoppingCart {
     // 存储购物车中的商品的列表
-    private List<Product> items = new ArrayList<>();
+    private final List<Product> items = new ArrayList<>();
 
     // 购物车对应的促销策略列表
-    private List<PromotionStrategy> promotionStrategies = new ArrayList<>();
+    private final List<PromotionStrategy> promotionStrategies = new ArrayList<>();
 
 
     /*
      * @param product: 商品对象
-      * @return void
+     * @return void
      * @author LeoLiu
      * @description 在购物车中添加商品
      * @date 2023/7/7 21:21
@@ -93,11 +95,11 @@ public class ShoppingCart {
      * @date 2023/7/7 21:20
      */
     public double calculateOriginalTotalPrice() {
-        double totalPrice = 0;
+        BigDecimal totalPrice = new BigDecimal("0.0");
         for (Product item : items) {
-            totalPrice += item.calculateOriginalTotal();
+            totalPrice.add(new BigDecimal(Double.toString(item.calculateOriginalTotal())));
         }
         // 对每一种促销策略，应用到总价格上
-        return totalPrice;
+        return totalPrice.setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 }

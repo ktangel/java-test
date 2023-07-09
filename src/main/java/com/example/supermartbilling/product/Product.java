@@ -18,7 +18,7 @@ public class Product {
     private int quantity; // 商品数量
     private int weight; // 商品重量
     private String weightUnit; // 重量单位
-    private List<PromotionStrategy> promotions; // 商品的促销策略列表
+    private final List<PromotionStrategy> promotions; // 商品的促销策略列表
 
     // 商品类的构造函数
     public Product(int id, String name, double originalPrice, String weightUnit) {
@@ -151,6 +151,8 @@ public class Product {
      * @date 2023/7/7 17:38
      */
     public double calculateOriginalTotal() {
-        return Math.round((originalPrice * quantity) * 100.0) / 100.0;
+        BigDecimal originalPrice = new BigDecimal(Double.toString(getOriginalPrice()));
+        BigDecimal quantity = new BigDecimal(Integer.toString(getQuantity()));
+        return originalPrice.multiply(quantity).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 }

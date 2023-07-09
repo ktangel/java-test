@@ -5,7 +5,7 @@ import java.util.Random;
 
 
 public class TestUtils {
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     public static int randomWeight() {
         return Math.max(randomInt(), 0);
@@ -35,6 +35,6 @@ public class TestUtils {
     }
 
     public static int randomInt() {
-        return random.nextInt(400);
+        return random.nextInt(400000);
     }
 }

@@ -2,7 +2,7 @@ package com.example.supermartbilling;
 
 import com.example.supermartbilling.customer.*;
 import com.example.supermartbilling.product.*;
-import com.example.supermartbilling.checkout.CheckoutProcess;
+import com.example.supermartbilling.pay.CheckoutProcess;
 import com.example.supermartbilling.promotion.DiscountPromotion;
 import com.example.supermartbilling.promotion.FixedPromotion;
 import com.example.supermartbilling.promotion.Promotion;
@@ -45,7 +45,8 @@ public class ShoppingCartTest {
                 {30.0, 3}
         };
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            double test = calculateTotalPrice(priceAndQuantityListWithNegativeQuantity);
+            double test;
+            test = calculateTotalPrice(priceAndQuantityListWithNegativeQuantity);
             System.out.println(test);
         }, "期望函数在处理负数数量时抛出IllegalArgumentException异常");
 

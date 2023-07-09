@@ -1,7 +1,6 @@
-package com.example.supermartbilling.checkout;
+package com.example.supermartbilling.pay;
 
 import com.example.supermartbilling.customer.Customer;
-import com.example.supermartbilling.customer.ShoppingCart;
 
 // 结账过程类，一般超市的结算流程应该会有多个步骤，为了扩展和维护，结算流程单独需要一个类
 public class CheckoutProcess {
